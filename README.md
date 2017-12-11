@@ -1,8 +1,6 @@
-# Clojure Dependency Leiningen
+# Leiningen Dependencies Automation
 
-clojure-deps-lein -- TODO?
-
-Clojure dependency leiningen is an [Atomist](https://atomist.com) automation using our [experimental Clojure client](https://github.com/atomisthq/automation-client-clj). It listens for commit events and checks the leiningen project.clj for changes to dependencies. If it notices that a library can be updated it asks the user if they would like to update and opens a PR with the change. As it runs in Clojure it is well suited to editing Clojure code, we use [clj-rewrite](https://github.com/xsc/rewrite-clj) for this.
+Lein-deps-automation is an [Atomist](https://atomist.com) automation using our [experimental Clojure client](https://github.com/atomisthq/automation-client-clj). It listens for commit events and checks the leiningen project.clj for changes to dependencies. If it notices that a library can be updated it asks the user if they would like to update and opens a PR with the change. As it runs in Clojure it is well suited to editing Clojure code, we use [clj-rewrite](https://github.com/xsc/rewrite-clj) for this.
 
 The basic strategy is:
 
