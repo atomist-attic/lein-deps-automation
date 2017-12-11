@@ -1,0 +1,34 @@
+subscription ImpactEvent
+{
+  ParentImpact {
+    id
+    data
+    commit {
+      sha
+      fingerprints {
+        sha
+        data
+        name
+      }
+      repo {
+        name
+        org {
+          owner
+          ownerType
+        }
+        channels {
+          channelId
+          name
+        }
+      }
+    }
+    commits {
+      sha
+      fingerprints {
+        sha
+        data
+        name
+      }
+    }
+  }
+}

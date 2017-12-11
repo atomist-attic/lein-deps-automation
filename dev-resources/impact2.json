@@ -1,0 +1,79 @@
+{
+  "data": {
+    "ParentImpact": [
+      {
+        "id": "T095SFFBK_f96b4a7c70cd530c9c813bcabc33a157a887f645",
+        "data": "[[[\"defstate\",0],[\"defns\",0],[\"build\",0],[\"lein\",0]]]",
+        "commit": {
+          "sha": "f96b4a7c70cd530c9c813bcabc33a157a887f645",
+          "fingerprints": [
+            {
+              "sha": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "data": "[]",
+              "name": "defstates"
+            },
+            {
+              "sha": "9a0678b69ba8e5e053cb2bde9053ae836524a7b6752cb159c96bf734f2ca8da0",
+              "data": "[\"foo1[]\",\"foo[x]\"]",
+              "name": "public-defns"
+            },
+            {
+              "sha": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "data": null,
+              "name": "build-config"
+            },
+            {
+              "sha": "f9b5d3ad4b2609bfe733308a10eba63dfd017a7c8c685ae6322906f5995ac651",
+              "data": "[[\"clj-config\",\"13.1.1-20170602194707\"],[\"clojure\",\"1.8.0\"]]",
+              "name": "project-deps"
+            }
+          ],
+          "repo": {
+            "name": "clj-repo1",
+            "org": {
+              "owner": "atomisthq",
+              "ownerType": "organization"
+            },
+            "channels": [
+              {
+                "channelId": "C87SZ2UG2",
+                "name": "clj-repo1"
+              }
+            ]
+          }
+        },
+        "commits": [
+          {
+            "sha": "5cf5d338706b0a82822a60532634874b8167bdd5",
+            "fingerprints": [
+              {
+                "sha": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                "data": "[]",
+                "name": "defstates"
+              },
+              {
+                "sha": "9a0678b69ba8e5e053cb2bde9053ae836524a7b6752cb159c96bf734f2ca8da0",
+                "data": "[\"foo1[]\",\"foo[x]\"]",
+                "name": "public-defns"
+              },
+              {
+                "sha": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                "data": null,
+                "name": "build-config"
+              },
+              {
+                "sha": "f9b5d3ad4b2609bfe733308a10eba63dfd017a7c8c685ae6322906f5995ac651",
+                "data": "[[\"clj-config\",\"13.1.1-20170602194707\"],[\"clojure\",\"1.8.0\"]]",
+                "name": "project-deps"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "extensions": {
+    "type": "READ_ONLY",
+    "operationName": null
+  }
+}

@@ -1,0 +1,4 @@
+{:domain       "prod.atomist.services."
+ :team-id      {:value "T7LV93CAY"}
+ :automation-namespaces ["fingerprints.impact" "fingerprints.fingerprinter.fingerprinter" "fingerprints.helloworld-example"]
+ :name "dependencies-clj"}
