@@ -46,14 +46,14 @@
     (z/right value)
     (let [anchor-zloc (find-loc zipper anchor)]
       (->
-        anchor-zloc
-        z/right
-        (z/insert-right (first (to-seq somekey-or-keys)))
-        (w/insert-space-right (indent anchor-zloc))
-        w/insert-newline-right
-        z/right
-        (z/insert-right default-value)
-        z/right))))
+       anchor-zloc
+       z/right
+       (z/insert-right (first (to-seq somekey-or-keys)))
+       (w/insert-space-right (indent anchor-zloc))
+       w/insert-newline-right
+       z/right
+       (z/insert-right default-value)
+       z/right))))
 
 (defn assoc-if
   "If it's an empty map, just assoc. Otherwise find an anchor and use insert-if"
@@ -63,8 +63,8 @@
       (throw (RuntimeException. "assoc-if only works on maps")))
     (if (empty? s)
       (->
-        (z/assoc zipper somekey someval)
-        z/down
-        (z/find-depth-first #(= (z/sexpr %) somekey))
-        z/right)
+       (z/assoc zipper somekey someval)
+       z/down
+       (z/find-depth-first #(= (z/sexpr %) somekey))
+       z/right)
       (insert-if zipper (last (keys s)) somekey someval))))

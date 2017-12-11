@@ -33,4 +33,4 @@
                    :source-paths   ["env/dev/clj"]
                    :resource-paths ["env/dev/resources"]}}
 
-            :repositories [["atomist" {:url "https://atomist.jfrog.io/atomist/libs-release-local"}]])
+  :repositories [["atomist" {:url "https://atomist.jfrog.io/atomist/libs-release-local"}]])

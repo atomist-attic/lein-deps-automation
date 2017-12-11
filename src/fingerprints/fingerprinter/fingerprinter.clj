@@ -22,7 +22,7 @@
       (log/info (with-out-str (clojure.pprint/pprint d)))
       (try
         (log/info
-          (client/post callback-url {:body (json/json-str d) :content-type "application/json"}))
+         (client/post callback-url {:body (json/json-str d) :content-type "application/json"}))
         (catch Throwable t (log/error t (format "problem posting data back to %s" callback-url)))))))
 
 (defn

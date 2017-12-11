@@ -11,6 +11,6 @@
 
 (defn -main [& args]
   (log/info
-    (-> (mount/start)))
+   (-> (mount/start)))
   (.. Runtime getRuntime (addShutdownHook (Thread. (on-stop))))
   (.. Thread currentThread join))

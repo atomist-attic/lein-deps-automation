@@ -40,8 +40,7 @@
                    :source-paths ["dev"]
                    :repl-options {:init-ns user}}}
 
-  :repositories [
-                 ["releases" {:url      "https://sforzando.artifactoryonline.com/sforzando/libs-release-local"
+  :repositories [["releases" {:url      "https://sforzando.artifactoryonline.com/sforzando/libs-release-local"
                               :username [:gpg :env/artifactory_user]
                               :password [:gpg :env/artifactory_pwd]}]
                  ["plugins" {:url      "https://sforzando.artifactoryonline.com/sforzando/plugins-release"

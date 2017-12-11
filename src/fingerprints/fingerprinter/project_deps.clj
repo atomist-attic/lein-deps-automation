@@ -24,14 +24,14 @@
 (defn edit-library [^File f library-name library-version]
   (let [project (File. f "project.clj")]
     (spit
-      project
-      (-> (z/of-file project)
-          dependencies
-          (z/find z/next #(if-let [s (z/sexpr %)]
-                            (and (symbol? s) (= library-name (name s)))))
-          (z/right)
-          (z/replace library-version)
-          (z/root-string)))))
+     project
+     (-> (z/of-file project)
+         dependencies
+         (z/find z/next #(if-let [s (z/sexpr %)]
+                           (and (symbol? s) (= library-name (name s)))))
+         (z/right)
+         (z/replace library-version)
+         (z/root-string)))))
 
 (defn run [^File f]
   (let [project (File. f "project.clj")]

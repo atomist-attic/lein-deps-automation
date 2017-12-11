@@ -16,14 +16,14 @@
   "Returns the goals for a team"
   [team-id]
   (if-let [pref (->>
-                  (-> (api/run-query team-id "{ChatTeam {id preferences {name value}}}")
-                      :data
-                      :ChatTeam
-                      first
-                      :preferences)
-                  (filter #(= "atomist:fingerprints:clojure:library-goals" (:name %)))
-                  first
-                  :value)]
+                 (-> (api/run-query team-id "{ChatTeam {id preferences {name value}}}")
+                     :data
+                     :ChatTeam
+                     first
+                     :preferences)
+                 (filter #(= "atomist:fingerprints:clojure:library-goals" (:name %)))
+                 first
+                 :value)]
     (json/read-str pref)))
 
 (defn update-goals
@@ -60,32 +60,32 @@
 (defn- create-library-editor-choice
   [event channel-name {:keys [name version]} current owner repo]
   (api/actionable-message
-    (api/channel event channel-name)
-    {:text (format "%s/%s Should we update %s from %s to %s?" owner repo name current version)
-     :attachments
-           [{:callback_id "callbackid1"
-             :text        ""
-             :markdwn_in  ["text"]
-             :actions     [{:text            "Update"
-                            :type            "button"
-                            :name            "rug"
-                            :atomist/command {:rug        {:type "command_handler" :name "confirm-update"}
-                                              :parameters [{:name  "owner"
-                                                            :value owner}
-                                                           {:name  "repo"
-                                                            :value repo}
-                                                           {:name  "library.name"
-                                                            :value name}
-                                                           {:name  "library.version"
-                                                            :value version}]}}
-                           {:text            (str "Set goal to " current)
-                            :type            "button"
-                            :name            "rug"
-                            :atomist/command {:rug        {:type "command_handler" :name "set-team-library-goal"}
-                                              :parameters [{:name  "library.name"
-                                                            :value name}
-                                                           {:name  "library.version"
-                                                            :value current}]}}]}]}))
+   (api/channel event channel-name)
+   {:text (format "%s/%s Should we update %s from %s to %s?" owner repo name current version)
+    :attachments
+    [{:callback_id "callbackid1"
+      :text        ""
+      :markdwn_in  ["text"]
+      :actions     [{:text            "Update"
+                     :type            "button"
+                     :name            "rug"
+                     :atomist/command {:rug        {:type "command_handler" :name "confirm-update"}
+                                       :parameters [{:name  "owner"
+                                                     :value owner}
+                                                    {:name  "repo"
+                                                     :value repo}
+                                                    {:name  "library.name"
+                                                     :value name}
+                                                    {:name  "library.version"
+                                                     :value version}]}}
+                    {:text            (str "Set goal to " current)
+                     :type            "button"
+                     :name            "rug"
+                     :atomist/command {:rug        {:type "command_handler" :name "set-team-library-goal"}
+                                       :parameters [{:name  "library.name"
+                                                     :value name}
+                                                    {:name  "library.version"
+                                                     :value current}]}}]}]}))
 
 (defn- perform
   [event action]
@@ -108,8 +108,8 @@
   (log/infof "check %s %s and %s" n v goals)
   (cond
     (and
-      (has-goal? goals n)
-      (not (= v (get goals n))))
+     (has-goal? goals n)
+     (not (= v (get goals n))))
     {:action  :update-library
      :library {:name n :version (get goals n)}
      :current v}
@@ -125,10 +125,10 @@
     (case s
       "project-deps"
       (concat
-        (when (not (= (:sha from) (:sha to)))
-          [{:action :display-dep-differences
-            :data   (diff from to)}])
-        (map #(apply check-library goals %) (data to)))
+       (when (not (= (:sha from) (:sha to)))
+         [{:action :display-dep-differences
+           :data   (diff from to)}])
+       (map #(apply check-library goals %) (data to)))
       "readme.md"
       (when (not (= (:sha from) (:sha to)))
         [{:action :readme-changed}])
@@ -146,9 +146,9 @@
       (if (and from to)
         (->> fp-names
              (mapcat
-               (fn [fp] (diff-fp team-id fp
-                                 (->> from :fingerprints (some #(if (= fp (:name %)) %)))
-                                 (->> to :fingerprints (some #(if (= fp (:name %)) %)))))))
+              (fn [fp] (diff-fp team-id fp
+                                (->> from :fingerprints (some #(if (= fp (:name %)) %)))
+                                (->> to :fingerprints (some #(if (= fp (:name %)) %)))))))
         (log/info "Missing some data (is this our first fingerprint commit?)")))))
 
 (defn
@@ -195,11 +195,11 @@
                                   library-name
                                   library-version))
     (git/raise-PR-in-a-cloned-workspace
-      {:commit {:owner owner :repo repo :token token}}
-      (fn [f]
-        (deps/edit-library f library-name library-version))
-      (format "Add library feature %s/%s" library-version library-name)
-      (format "update %s/%s to use version %s of %s" owner repo library-version library-name))))
+     {:commit {:owner owner :repo repo :token token}}
+     (fn [f]
+       (deps/edit-library f library-name library-version))
+     (format "Add library feature %s/%s" library-version library-name)
+     (format "update %s/%s to use version %s of %s" owner repo library-version library-name))))
 
 (defn
   ^{:command {:name        "set-team-library-goal"
@@ -260,22 +260,22 @@
     (api/simple-message o (format "```%s```" (with-out-str (clojure.pprint/pprint goals))))
     (if (and owner repo)
       (git/run-with-cloned-workspace
-        {:commit {:owner owner :repo repo :token token}}
-        (fn [d]
-          (if-let [libs (deps/project-dependencies (File. d "project.clj"))]
-            (let [options (get-options goals libs)]
-              (api/actionable-message
-                o
-                {:text "Leiningen Library Fingerprint"
-                 :attachments
-                       [{:callback_id "callbackid1"
-                         :text        (format "Would you like to set a team-wide goal dependency based on current dependencies in %s/%s?" owner repo)
-                         :markdwn_in  ["text"]
-                         :actions     [{:text            "Choose Goal ..."
-                                        :type            "select"
-                                        :name            "rug"
-                                        :options         options
-                                        :atomist/command {:rug            {:type "command_handler"
-                                                                           :name (name :choose-team-library-goal)}
-                                                          :parameter_name "library"
-                                                          :parameters     []}}]}]}))))))))
+       {:commit {:owner owner :repo repo :token token}}
+       (fn [d]
+         (if-let [libs (deps/project-dependencies (File. d "project.clj"))]
+           (let [options (get-options goals libs)]
+             (api/actionable-message
+              o
+              {:text "Leiningen Library Fingerprint"
+               :attachments
+               [{:callback_id "callbackid1"
+                 :text        (format "Would you like to set a team-wide goal dependency based on current dependencies in %s/%s?" owner repo)
+                 :markdwn_in  ["text"]
+                 :actions     [{:text            "Choose Goal ..."
+                                :type            "select"
+                                :name            "rug"
+                                :options         options
+                                :atomist/command {:rug            {:type "command_handler"
+                                                                   :name (name :choose-team-library-goal)}
+                                                  :parameter_name "library"
+                                                  :parameters     []}}]}]}))))))))
