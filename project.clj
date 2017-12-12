@@ -1,6 +1,6 @@
-(defproject fingerprint "0.0.1-SNAPSHOT"
+(defproject fingerprint "0.1.0-SNAPSHOT"
   :description "An atomist automation in Clojure that updates project dependencies"
-  :url "http://example.com/FIXME"
+  :url "https://github.com/atomisthq/lein-deps-automation"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [[org.clojure/clojure "1.9.0-alpha14"]
