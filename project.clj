@@ -1,11 +1,11 @@
-(defproject fingerprint "0.1.0-SNAPSHOT"
+(defproject fingerprint "0.1.1-SNAPSHOT"
   :description "An atomist automation in Clojure that updates project dependencies"
   :url "https://github.com/atomisthq/lein-deps-automation"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [[org.clojure/clojure "1.9.0-alpha14"]
 
-                 [automation-api-clj "0.2.5"]
+                 [atomist/automation-api-clj "0.3.2"]
 
                  ;; fingerprints
                  [rewrite-clj "0.6.0"]
@@ -31,6 +31,4 @@
                                   [org.clojure/tools.nrepl      "0.2.12"]
                                   [org.clojure/tools.namespace "0.2.11"]]
                    :source-paths   ["env/dev/clj"]
-                   :resource-paths ["env/dev/resources"]}}
-
-            :repositories [["atomist" {:url "https://atomist.jfrog.io/atomist/libs-release-local"}]])
+                   :resource-paths ["env/dev/resources"]}})
