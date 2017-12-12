@@ -30,7 +30,3 @@ To get started try editing the `hello-clojure-world` automation in `src/fingerpr
 The automation can be built using `lein uberjar` and run using `java -cp target/fingerprint.jar clojure.main -m main`
 
 Note that this version will use the `config.edn` version from `resources/config.edn` rather than the dev version.
-
-## License
-
-TODO! eclipse?
